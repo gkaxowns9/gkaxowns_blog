@@ -90,7 +90,7 @@ plt.show() # 그래프 표시
 
 - 위 코드를 실행시킨 결과, 아래와 같은 그래프를 볼 수 있었다.
 
-![Figure_1.png](Figure_1.png)
+![Figure_1.png](../img/Figure_1.png)
 
 ## 활용
 

@@ -30,15 +30,6 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
-  // Dynamically extract all unique tags from published posts
-  const allTags = useMemo(() => {
-    const tagsSet = new Set<string>();
-    publishedPosts.forEach(post => {
-      post.tags.forEach(tag => tagsSet.add(tag));
-    });
-    return Array.from(tagsSet);
-  }, [publishedPosts]);
-
   // Filter posts based on search query and selected tag
   const filteredPosts = useMemo(() => {
     return publishedPosts.filter(post => {

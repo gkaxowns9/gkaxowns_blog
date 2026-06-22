@@ -1,8 +1,12 @@
 import { useMemo, useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import dracula from 'react-syntax-highlighter/dist/esm/styles/prism/dracula';
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import "katex/dist/katex.min.css";
 import { ArrowLeft, Calendar } from 'lucide-react';
 import { getAllPosts } from '../utils/postParser';
 
@@ -21,7 +25,6 @@ function getMetaDescription(content: string): string {
 
 export default function PostDetail() {
   const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
 
   // Load posts
   const { post, prevPost, nextPost } = useMemo(() => {
@@ -157,7 +160,8 @@ export default function PostDetail() {
           {/* Post Body (Markdown) */}
           <div className="markdown-body">
             <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
+              remarkPlugins={[remarkMath]}
+              rehypePlugins={[rehypeKatex]}
               components={{
                 h2: ({ node, children, ...props }) => {
                   const text = String(children).replace(/[#`*_\[\]]/g, '').trim();
@@ -171,11 +175,20 @@ export default function PostDetail() {
                 },
                 code: ({ node, className, children, ...props }) => {
                   const match = /language-(\w+)/.exec(className || '');
-                  const isInline = !match;
                   
-                  if (isInline) {
-                    return <code className={className} {...props}>{children}</code>;
-                  }
+                  return match ? (
+                    <SyntaxHighlighter
+                      style={dracula} // TODO: 에러 수정
+                      language={match[1] || ''}
+                      PreTag="div"
+                      children={String(children).replace(/\n$/, '')}
+                      {...props}
+                    />
+                  ) : (
+                    <code className={className} {...props}>
+                      {children}
+                    </code>
+                  );
                 }
               }}
             >
