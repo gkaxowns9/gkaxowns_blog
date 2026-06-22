@@ -2,20 +2,14 @@
 
 생성일: 2025년 2월 9일 오후 1:01
 상태: 정리 완료
-
-<aside>
-🚧
-
-내가 쓰다가 귀찮아져서 claude 보고 쓰라함. 글 잘씀
-
-</aside>
+태그: CS, 자바, Enum
 
 ## 정의
 
 - `Enum` 은 **열거형**이라고 하는 타입의 종류이며 **서로 연관된 상수들의 집합**을 의미한다.
-이야기만 들었을 때는 집합이니까 뭐 List 비스무리 한거로 생각해볼 수 있지만, Enum을 주로 사용하는 Java의 경우 이를 Class처럼 사용한다는 정신나간소리를 한다. (역시 이넘. 이놈~ 할 듯)
+  이야기만 들었을 때는 집합이니까 뭐 List 비스무리 한거로 생각해볼 수 있지만, Enum을 주로 사용하는 Java의 경우 이를 Class처럼 사용한다는 정신나간소리를 한다. (역시 이넘. 이놈~ 할 듯)
 - 사실 Enum과 List는 꽤 차이가 있다. 수학으로 생각하자면 Enum은 **집합**이고, List는 **수열**이다.
-Enum은 List보다는 개인적으로 **객체화된 Map, Dictionary** 쯤이라고 생각한다.
+  Enum은 List보다는 개인적으로 **객체화된 Map, Dictionary** 쯤이라고 생각한다.
 - 계속 이렇게 설명하는 것보다 예시코드를 보는게 더 좋을 것 같으니 바로 예시코드를 보자
 
 ## 예시코드
@@ -23,13 +17,13 @@ Enum은 List보다는 개인적으로 **객체화된 Map, Dictionary** 쯤이라
 ```java
 public enum testenum {
     A(1), B(2), C(3);
-    
+
     private int value;
-    
+
     private testenum(int value) {
         this.value = value;
     }
-    
+
     public int getValue() {
         return value;
     }

@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Search, Calendar, Tag, Inbox } from 'lucide-react';
+import { Search, Calendar, Inbox } from 'lucide-react';
 import { getAllPosts } from '../utils/postParser';
 
 // Excerpt generator to strip markdown formatting

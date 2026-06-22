@@ -97,28 +97,19 @@ export function getAllPosts(): Post[] {
         // e.g., "2025년 1월 9일 오후 6:58" -> convert to ISO/standard format
         // PM/AM check
         const isPM = dateStr.includes('오후');
-        const cleanedStr = dateStr
-          .replace('년', '-')
-          .replace('월', '-')
-          .replace('일', '')
-          .replace('오전', '')
-          .replace('오후', '')
-          .replace(/\s+/g, ' ')
-          .trim();
-        
-        const [datePart, timePart] = cleanedStr.split(' ');
-        const [year, month, day] = datePart.split('-').map(Number);
-        
-        let hours = 0;
-        let minutes = 0;
-        if (timePart) {
-          const parts = timePart.split(':').map(Number);
-          hours = parts[0] || 0;
-          minutes = parts[1] || 0;
+        const year = Number(dateStr.split('년')[0]);
+        const month = Number(dateStr.split('년 ')[1].split('월')[0]);
+        const day = Number(dateStr.split('월 ')[1].split('일')[0])
+
+        let timePart, hours = 0;
+        if (isPM) {
+          timePart = dateStr.split('일 ')[1].split('오후 ')[1];
+          hours = Number(timePart.split(':')[0]) + 12;
+        } else {
+          timePart = dateStr.split('일 ')[1].split('오전 ')[1];
+          hours = Number(timePart.split(':')[0]);
         }
-        
-        if (isPM && hours < 12) hours += 12;
-        if (!isPM && hours === 12) hours = 0;
+        const minutes = Number(timePart.split(':')[1]);
         
         return new Date(year, month - 1, day, hours, minutes);
       } catch (e) {
