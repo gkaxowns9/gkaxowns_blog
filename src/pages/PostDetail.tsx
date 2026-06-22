@@ -1,12 +1,15 @@
 import { useMemo, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import dracula from 'react-syntax-highlighter/dist/esm/styles/prism/dracula';
+import remarkGfm from 'remark-gfm';
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
+
 import { ArrowLeft, Calendar } from 'lucide-react';
 import { getAllPosts } from '../utils/postParser';
 
@@ -160,7 +163,7 @@ export default function PostDetail() {
           {/* Post Body (Markdown) */}
           <div className="markdown-body">
             <ReactMarkdown
-              remarkPlugins={[remarkMath]}
+              remarkPlugins={[remarkGfm, remarkMath]}
               rehypePlugins={[rehypeKatex]}
               components={{
                 h2: ({ node, children, ...props }) => {
