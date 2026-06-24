@@ -33,21 +33,21 @@ export default function Home() {
 
   // Filter posts based on search query and selected tag
   const filteredPosts = useMemo(() => {
-    let post_count = 1;
+    let post_count = 0;
 
     return publishedPosts.filter(post => {
+      console.log(`Filtering post: ${post.title}, currentPage: ${currentPage}, post_count: ${post_count}`);
+
       const matchesSearch = 
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
         
       const matchesTag = selectedTag ? post.tags.includes(selectedTag) : true;
-      
-      const isVisible = matchesSearch && matchesTag;
 
-      if ((post_count > 10*(currentPage - 1)) && (post_count <= 10*currentPage) && isVisible) {
+      if (matchesSearch && matchesTag) {
         post_count++;
-        return true;
+        return post_count > 10*(currentPage - 1) && post_count <= 10*currentPage;
       } else {
         return false;
       }
