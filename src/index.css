@@ -373,6 +373,22 @@ input, button {
   font-weight: 600;
 }
 
+.pagination{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.page-btn {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 /* Post Detail Page Layout */
 .post-detail-layout {
   display: grid;

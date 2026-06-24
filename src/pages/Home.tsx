@@ -21,7 +21,8 @@ function getExcerpt(content: string, maxLength = 120): string {
 
 export default function Home() {
   const allPosts = useMemo(() => getAllPosts(), []);
-  
+  const [currentPage, setCurrentPage] = useState(1);
+
   // 정리 완료 글만 가져옴
   const publishedPosts = useMemo(() => {
     return allPosts.filter(post => post.status === '정리 완료');
@@ -32,6 +33,8 @@ export default function Home() {
 
   // Filter posts based on search query and selected tag
   const filteredPosts = useMemo(() => {
+    let post_count = 1;
+
     return publishedPosts.filter(post => {
       const matchesSearch = 
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -40,9 +43,17 @@ export default function Home() {
         
       const matchesTag = selectedTag ? post.tags.includes(selectedTag) : true;
       
-      return matchesSearch && matchesTag;
+      const isVisible = matchesSearch && matchesTag;
+
+      if ((post_count > 10*(currentPage - 1)) && (post_count <= 10*currentPage) && isVisible) {
+        post_count++;
+        return true;
+      } else {
+        return false;
+      }
+
     });
-  }, [publishedPosts, searchQuery, selectedTag]);
+  }, [publishedPosts, searchQuery, selectedTag, currentPage]);
 
   return (
     <div className="container">
@@ -110,6 +121,20 @@ export default function Home() {
             <p style={{ fontSize: '1.1rem', fontWeight: 500 }}>조건에 맞는 포스트를 찾을 수 없습니다.</p>
             <p style={{ fontSize: '0.9rem', marginTop: '0.25rem' }}>다른 키워드로 검색해 보세요.</p>
           </div>
+        )}
+      </div>
+
+      {/* Pagination Controls */}
+      <div className="pagination">
+        {currentPage > 1 ? (
+          <button className="page-btn" onClick={() => setCurrentPage(currentPage - 1)}>이전</button>
+        ) : (
+          <button className="page-btn" disabled>이전</button>
+        )}
+        {(filteredPosts.length === 10) && (publishedPosts.length > currentPage * 10) ? (
+          <button className="page-btn" onClick={() => setCurrentPage(currentPage + 1)}>다음</button>
+        ) : (
+          <button className="page-btn" disabled>다음</button>
         )}
       </div>
     </div>
