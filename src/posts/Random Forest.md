@@ -9,19 +9,19 @@
 - Random Forest 는 분류와 회귀에 사용되는 지도학습 알고리즘으로, **여러 개의 의사결정나무(Decision Tree)를 조합한 앙상블 모델**이다.
   단순하게 설명하자면, **수도 없이 많은 조건문들을 만들고 이를 합치는 모델**이다.
 
-![이 밈의 주인공이 바로 이 친구이다.](image.png)
+![이 밈의 주인공이 바로 이 친구이다.](/img/ai-if.png)
 
-이 밈의 주인공이 바로 이 친구이다.
+`이 밈의 주인공이 바로 이 친구이다.`
 
 - 아마 많은 사람들이 Scikit Learn에서 이 Random Forest를 사용해 봤을 것이다.
   하지만 이 원리에 대해서는 깊게 알기 어렵기 때문에 이에 대해 설명해 보고자 한다.
 
 ### **Decision Tree**
 
-- 위에서 Random Forest는 여러 개의 **의사결정나무(Decision Tree)**를 사용한다고 했다.
+- 위에서 Random Forest는 여러 개의 **의사결정나무(Decision Tree)** 를 사용한다고 했다.
   의사결정나무는 일련의 if-else로 이루어진 나무모형이다.
 
-![image.png](image%201.png)
+![image.png](/img/Decision-Tree.png)
 
 - 의사결정나무는 **탐욕적 재귀 분할(Greedy Recursive Partitioning)** 알고리즘으로 만들어진다.
   이 알고리즘은 현재 노드에서 전역 최적점(global optimum)를 선택하여 매 단계에서 가장 성능 개선이 큰 분할을 선택한다.
@@ -30,8 +30,11 @@
   1. 전체 데이터를 Root에 배치한 후, Feature Subsampling 한다. (Random Forest 기준)
   2. 랜덤으로 선택된 Feature들로 분할 후보들을 만든다.
   3. 각 분할 후보들은 Error Function을 통해 Gain 값을 구한다. (아래 식 참고)
-     $Gain=Error(Root)−(\frac{n_L}{n}Error(L)+\frac{n_R}{n}Error(R))$
-     ($n$은 현재 노드에 포함된 샘플 수를 의미)
+      $$
+      Gain=Error(Root)−(\frac{n_L}{n}Error(L)+\frac{n_R}{n}Error(R))
+      $$
+      ($n$은 현재 노드에 포함된 샘플 수를 의미)
+
   4. Gain 값이 가장 큰 후보를 선택한다. (Greedy)
   5. 각 자식 노드에 대해 동일한 과정을 재귀적으로 반복한다. (Recursive)
   6. 최대 깊이나 최소 샘플 수에 도달하는 등의 조건을 만족하면 재귀를 멈춘다.
@@ -39,12 +42,12 @@
 ### Bagging
 
 - 위에서 Random Forest는 앙상블 모델이라고 했다. 이 앙상블이 무엇인지 알아보자.
-- 앙상블이란, **여러 개의 모델을 조합하여 더 강력하고 안정적인 예측 모델을 만드는 기법**이다.
+- 앙상블(ensemble)이란, **여러 개의 모델을 조합하여 더 강력하고 안정적인 예측 모델을 만드는 기법**이다.
   다양한 종류의 의사결정트리들을 사용하기 때문에 다양한 오차가 발생하고, 그런 값을 조합하여 더 높은 예측 성능과 일반화 능력을 가질 수 있다.
 
-![앙상블 설명하는 Figure](image%202.png)
+![앙상블 설명하는 Figure](/img/ensemble.png)
 
-앙상블 설명하는 Figure
+`앙상블 설명하는 Figure`
 
 - 랜덤 포레스트에서는 다양한 앙상블 기법 중에서 배깅 기법을 사용한다.
   이는 주로 **모델의 분산(variance)을 줄이기 위해** 사용된다.

@@ -59,7 +59,7 @@ $$
   해당 과정을 이해하기 위해서는 U-Net에 대해 이해해야 한다.
 - U-Net은 U자 모양의 신경망으로, **노이즈에서 고품질 이미지를 점진적으로 생성하는 역할**을 담당하는 핵심이다.
 
-![진짜 U자임;; [출처](https://ai-onespoon.tistory.com/entry/Stable-Diffusion-UNet-%EA%B5%AC%EC%A1%B0)](https://blog.kakaocdn.net/dna/D3vF1/btsLpEXDFiv/AAAAAAAAAAAAAAAAAAAAAL97oP5lYzZXKqZ81ZgKyY7uWOYk52PEzMZJdIkwH0p7/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1759244399&allow_ip=&allow_referer=&signature=1ADbnB4J6quYnMKwzJ7f5i2jHuY%3D)
+![진짜 U자임;; [출처](https://ai-onespoon.tistory.com/entry/Stable-Diffusion-UNet-%EA%B5%AC%EC%A1%B0)](/img/u-net.png)
 
 진짜 U자임;; [출처](https://ai-onespoon.tistory.com/entry/Stable-Diffusion-UNet-%EA%B5%AC%EC%A1%B0)
 

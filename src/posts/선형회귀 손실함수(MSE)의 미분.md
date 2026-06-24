@@ -25,7 +25,7 @@ $$
 - 편미분이란, **다변수 함수에서 관심이 있는 한 변수만 변수로 생각하고, 나머지 변수들은 상수로 취급**한 뒤 미분하는 방법이다.
   [미분을 설명했던 페이지](https://app.notion.com/p/176dc33ef50380e9b536edf23c7de745?pvs=21) 에서 미분한 함수를 도함수라고 했듯, 편미분한 함수는 **편도함수**라고 한다.
 
-![편미분 공식 [원본](https://velog.io/@swan9405/%ED%8E%B8%EB%AF%B8%EB%B6%84%EA%B3%BC-%EC%A0%84%EB%AF%B8%EB%B6%84)](image.png)
+![편미분 공식 [원본](https://velog.io/@swan9405/%ED%8E%B8%EB%AF%B8%EB%B6%84%EA%B3%BC-%EC%A0%84%EB%AF%B8%EB%B6%84)](/img/편미분.png)
 
 편미분 공식 [원본](https://velog.io/@swan9405/%ED%8E%B8%EB%AF%B8%EB%B6%84%EA%B3%BC-%EC%A0%84%EB%AF%B8%EB%B6%84)
 

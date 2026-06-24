@@ -119,11 +119,10 @@ for (testenum e : testenum.values()) {
 
 - 결과:
 
-```
+```shell
 A: 1
 B: 2
 C: 3
-
 ```
 
 ## Enum을 사용하는 이유

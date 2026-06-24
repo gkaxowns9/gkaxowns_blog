@@ -9,7 +9,7 @@
 - 직역하자면 **_여러 팔의 도박_** 쯤으로 볼 수 있을 것 같다. 실제로 이 문제는 여러 선택지(팔) 중 하나를 골라야 하는 도박꾼의 스토리를 가지고 있는 알고리즘 문제이다.
 - 아래 그림으로 간단히 요약해보자
 
-![[출처](https://myeonghak.github.io/recommender%20systems/RecSys-Multi-Armed-Bandits%28MAB%29/)](image.png)
+![[출처](https://myeonghak.github.io/recommender%20systems/RecSys-Multi-Armed-Bandits%28MAB%29/)](/img/bandits.png)
 
 [출처](https://myeonghak.github.io/recommender%20systems/RecSys-Multi-Armed-Bandits%28MAB%29/)
 
