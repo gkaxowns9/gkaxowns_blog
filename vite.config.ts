@@ -3,6 +3,7 @@ import path from 'path';
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import prerender from "@prerenderer/rollup-plugin";
+import Sitemap from 'vite-plugin-sitemap'
 
 const postsDir = path.resolve(__dirname, 'src', 'posts');
 
@@ -68,5 +69,9 @@ export default defineConfig({
           );
       },
     }),
+    Sitemap({ 
+      hostname: 'https://gkaxowns-blog.netlify.app',
+      dynamicRoutes: post_list
+    })
   ],
 });

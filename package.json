@@ -38,6 +38,7 @@
     "puppeteer": "^25.2.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
-    "vite": "^8.0.12"
+    "vite": "^8.0.12",
+    "vite-plugin-sitemap": "^0.8.2"
   }
 }
