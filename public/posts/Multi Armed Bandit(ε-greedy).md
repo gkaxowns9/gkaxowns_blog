@@ -1,8 +1,9 @@
-# Multi Armed Bandit(ε-greedy)
-
-생성일: 2025년 4월 4일 오후 8:08
-상태: 공사 중
-태그: 파이썬, 강화학습, Greedy, 알고리즘, CS
+---
+title: "Multi Armed Bandit(ε-greedy)"
+date: "2025-04-04T20:08:00"
+status: "공사 중"
+tags: ["파이썬", "강화학습", "Greedy", "알고리즘", "CS"]
+---
 
 ## Multi Armed Bandit
 

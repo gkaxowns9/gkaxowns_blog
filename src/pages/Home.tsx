@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Search, Calendar, Inbox } from 'lucide-react';
-import { getAllPosts } from '../utils/postParser';
+import { getAllPosts, formatDate } from '../utils/postParser';
 
 // Excerpt generator to strip markdown formatting
 function getExcerpt(content: string, maxLength = 120): string {
@@ -91,7 +91,7 @@ export default function Home() {
                 <div className="post-card-meta">
                   <span className="meta-item">
                     <Calendar size={14} />
-                    {post.date || '날짜 없음'}
+                    {post.date ? formatDate(post.date) : '날짜 없음'}
                   </span>
                 </div>
                 <Link to={`/post/${post.slug}`} key={post.slug}>

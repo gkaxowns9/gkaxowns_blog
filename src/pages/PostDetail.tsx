@@ -11,7 +11,7 @@ import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 
 import { ArrowLeft, Calendar } from 'lucide-react';
-import { getAllPosts } from '../utils/postParser';
+import { getAllPosts, formatDate } from '../utils/postParser';
 
 // Helper to strip markdown for meta description
 function getMetaDescription(content: string): string {
@@ -150,7 +150,7 @@ export default function PostDetail() {
             <div className="post-meta-info">
               <span className="meta-item">
                 <Calendar size={16} style={{ color: 'var(--accent)' }} />
-                {post.date}
+                {formatDate(post.date)}
               </span>
               <div className="post-card-tags" style={{ margin: 0 }}>
                 {post.tags.map(tag => (

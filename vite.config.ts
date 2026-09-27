@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 import prerender from "@prerenderer/rollup-plugin";
 import Sitemap from 'vite-plugin-sitemap'
 
-const postsDir = path.resolve(__dirname, 'src', 'posts');
+const postsDir = path.resolve(__dirname, 'public', 'posts');
 
 function generateSlug(fileName: string) {
   return fileName
@@ -27,15 +27,19 @@ function getPostStatus(rawContent: string) {
   return '';
 }
 
-const post_list = fs.readdirSync(postsDir)
-  .filter(fileName => fileName.endsWith('.md'))
-  .map(fileName => {
-    const rawContent = fs.readFileSync(path.join(postsDir, fileName), 'utf-8');
-    const status = getPostStatus(rawContent);
-    const slug = generateSlug(fileName);
-    return status === '정리 완료' ? `/post/${slug}` : null;
-  })
-  .filter((route): route is string => route !== null);
+const post_routes = new Set<string>();
+
+const files = fs.readdirSync(postsDir).filter(fileName => fileName.endsWith('.md'));
+for (const fileName of files) {
+  const rawContent = fs.readFileSync(path.join(postsDir, fileName), 'utf-8');
+  const status = getPostStatus(rawContent);
+  const slug = generateSlug(fileName);
+  if (status === '정리 완료') {
+    post_routes.add(`/post/${slug}`);
+  }
+}
+
+const post_list = Array.from(post_routes);
 
 console.log('Prerendering the following routes:', post_list);
 
@@ -69,7 +73,7 @@ export default defineConfig({
           );
       },
     }),
-    Sitemap({ 
+    Sitemap({
       hostname: 'https://gkaxowns-blog.netlify.app',
       dynamicRoutes: post_list
     })

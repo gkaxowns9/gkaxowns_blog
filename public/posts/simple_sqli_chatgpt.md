@@ -1,8 +1,9 @@
-# simple_sqli_chatgpt
-
-생성일: 2026년 6월 24일 오후 5:31
-상태: 정리 완료
-태그: 파이썬, Write-up, flask, dreamhack, webhacking, SQLi
+---
+title: "simple_sqli_chatgpt"
+date: "2026-06-24T17:31:00"
+status: "정리 완료"
+tags: ["파이썬", "Write-up", "flask", "dreamhack", "webhacking", "SQLi"]
+---
 
 ## 문제 설명
 

@@ -1,8 +1,9 @@
-# Random Forest
-
-생성일: 2026년 2월 6일 오전 12:44
-상태: 정리 완료
-태그: 파이썬, 머신러닝, Decision Tree, 앙상블
+---
+title: "Random Forest"
+date: "2026-02-06T00:44:00"
+status: "정리 완료"
+tags: ["파이썬", "머신러닝", "Decision Tree", "앙상블"]
+---
 
 ## Random Forest란?
 

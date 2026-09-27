@@ -1,8 +1,9 @@
-# Enum (with Java)
-
-생성일: 2025년 2월 9일 오후 1:01
-상태: 정리 완료
-태그: CS, 자바, Enum
+---
+title: "Enum (with Java)"
+date: "2025-02-09T13:01:00"
+status: "정리 완료"
+tags: ["CS", "자바", "Enum"]
+---
 
 ## 정의
 

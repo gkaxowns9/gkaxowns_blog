@@ -1,8 +1,9 @@
-# Stable Diffusion
-
-생성일: 2025년 9월 11일 오후 2:55
-상태: 정리 완료
-태그: 파이썬, 딥러닝, 이미지 생성, Diffusion
+---
+title: "Stable Diffusion"
+date: "2025-09-11T14:55:00"
+status: "정리 완료"
+tags: ["파이썬", "딥러닝", "이미지 생성", "Diffusion"]
+---
 
 🚧 이 페이지는 [illustrated-stable-diffusion](https://jalammar.github.io/illustrated-stable-diffusion/) 을 참고하여 작성됨
 

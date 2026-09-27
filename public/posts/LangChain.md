@@ -1,8 +1,9 @@
-# LangChain
-
-생성일: 2025년 2월 7일 오전 9:42
-상태: 정리 완료
-태그: 인공지능, 파이썬, LangChain, LLM
+---
+title: "LangChain"
+date: "2025-02-07T09:42:00"
+status: "정리 완료"
+tags: ["인공지능", "파이썬", "LangChain", "LLM"]
+---
 
 🚧이 페이지는 [인프런-입문자를위한-랭체인-기초](https://www.inflearn.com/course/%EC%9E%85%EB%AC%B8%EC%9E%90%EB%A5%BC%EC%9C%84%ED%95%9C-%EB%9E%AD%EC%B2%B4%EC%9D%B8-%EA%B8%B0%EC%B4%88) 강의를 참고하여 작성됨
 

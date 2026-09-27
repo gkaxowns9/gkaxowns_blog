@@ -1,8 +1,9 @@
-# DAHDSR 엔벨로프(with Vital VST)
-
-생성일: 2025년 1월 16일 오전 1:59
-상태: 정리 완료
-태그: 음악, 신디사이저, VitalVST
+---
+title: "DAHDSR 엔벨로프(with Vital VST)"
+date: "2025-01-16T01:59:00"
+status: "정리 완료"
+tags: ["음악", "신디사이저", "VitalVST"]
+---
 
 🚧 이 페이지는 나무위키 **[ADSR 엔벨로프](https://namu.wiki/w/ADSR%20%EC%97%94%EB%B2%A8%EB%A1%9C%ED%94%84)** 를 참고하여 재해석하여 정리한 페이지임.
 

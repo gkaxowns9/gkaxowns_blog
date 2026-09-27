@@ -22,33 +22,52 @@ export function generateSlug(filename: string): string {
     .replace(/[?,.:;'"!@#$%^&*]/g, ''); // Remove general special chars
 }
 
+// Parse a YAML front matter value: "string" or ["a", "b"]
+function parseFrontMatterValue(value: string): string | string[] {
+  const v = value.trim();
+  if (v.startsWith('[')) {
+    try {
+      return JSON.parse(v);
+    } catch {
+      return v.slice(1, -1).split(',').map(t => t.trim().replace(/^["']|["']$/g, '')).filter(Boolean);
+    }
+  }
+  if (v.startsWith('"')) {
+    try {
+      return JSON.parse(v);
+    } catch {
+      return v.slice(1, -1);
+    }
+  }
+  return v.replace(/^'|'$/g, '');
+}
+
 export function parseMarkdown(fileName: string, rawContent: string): Post {
-  const lines = rawContent.split('\n');
-  
+  const lines = rawContent.replace(/\r\n/g, '\n').split('\n');
+
   let title = fileName.replace(/\.md$/, '');
   let date = '';
   let status = '';
   let tags: string[] = [];
-  
+
   let metadataEndIndex = 0;
-  
-  // Parse the first few lines for metadata
-  for (let i = 0; i < Math.min(lines.length, 10); i++) {
-    const line = lines[i].trim();
-    
-    if (line.startsWith('# ')) {
-      title = line.substring(2).trim();
-      metadataEndIndex = i + 1;
-    } else if (line.startsWith('생성일:')) {
-      date = line.substring(4).trim();
-      metadataEndIndex = i + 1;
-    } else if (line.startsWith('상태:')) {
-      status = line.substring(3).trim();
-      metadataEndIndex = i + 1;
-    } else if (line.startsWith('태그:')) {
-      const tagsStr = line.substring(3).trim();
-      tags = tagsStr ? tagsStr.split(',').map(t => t.trim()) : [];
-      metadataEndIndex = i + 1;
+
+  // Parse YAML front matter between the leading '---' lines
+  if (lines[0]?.trim() === '---') {
+    const closeIndex = lines.findIndex((line, i) => i > 0 && line.trim() === '---');
+    if (closeIndex > 0) {
+      for (const line of lines.slice(1, closeIndex)) {
+        const sep = line.indexOf(':');
+        if (sep === -1) continue;
+        const key = line.slice(0, sep).trim();
+        const value = parseFrontMatterValue(line.slice(sep + 1));
+
+        if (key === 'title') title = String(value);
+        else if (key === 'date') date = String(value);
+        else if (key === 'status') status = String(value);
+        else if (key === 'tags') tags = Array.isArray(value) ? value : String(value).split(',').map(t => t.trim()).filter(Boolean);
+      }
+      metadataEndIndex = closeIndex + 1;
     }
   }
 
@@ -57,7 +76,7 @@ export function parseMarkdown(fileName: string, rawContent: string): Post {
   while (contentStartLine < lines.length && lines[contentStartLine].trim() === '') {
     contentStartLine++;
   }
-  
+
   const content = lines.slice(contentStartLine).join('\n');
   const slug = generateSlug(fileName);
 
@@ -71,15 +90,32 @@ export function parseMarkdown(fileName: string, rawContent: string): Post {
   };
 }
 
+// Format an ISO date ("2025-01-14T17:23:00") for display: "2025년 1월 14일 오후 5:23"
+export function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  if (!dateStr || isNaN(d.getTime())) return dateStr;
+  const hours = d.getHours();
+  const ampm = hours < 12 ? '오전' : '오후';
+  const h12 = hours % 12 === 0 ? 12 : hours % 12;
+  const minutes = String(d.getMinutes()).padStart(2, '0');
+  return `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일 ${ampm} ${h12}:${minutes}`;
+}
+
 // Eagerly load all markdown posts using Vite's import.meta.glob
 export function getAllPosts(): Post[] {
   // Vite import.meta.glob loads markdown files as raw strings
-  const modules = import.meta.glob('../posts/*.md', { query: '?raw', eager: true }) as Record<string, { default: string }>;
+  const publicModules = import.meta.glob(['/public/posts/*.md', '../../public/posts/*.md'], { query: '?raw', eager: true }) as Record<string, { default: string }>;
+  const srcModules = import.meta.glob('../posts/*.md', { query: '?raw', eager: true }) as Record<string, { default: string }>;
+  const modules = { ...srcModules, ...publicModules };
   
+  const seenFileNames = new Set<string>();
   const posts: Post[] = [];
 
   for (const path in modules) {
     const fileName = path.split('/').pop() || '';
+    if (!fileName || seenFileNames.has(fileName)) continue;
+    seenFileNames.add(fileName);
+
     const rawContent = modules[path].default || '';
     
     if (rawContent) {
@@ -88,35 +124,10 @@ export function getAllPosts(): Post[] {
     }
   }
 
-  // Sort posts by date (newest first). Since Notion dates are string like "2025년 1월 9일 오후 6:58",
-  // we will try to parse them. If parsing fails, we fallback to slug sorting.
-  return posts.sort((a, b) => {
-    const parseNotionDate = (dateStr: string) => {
-      if (!dateStr) return new Date(0);
-      try {
-        // e.g., "2025년 1월 9일 오후 6:58" -> convert to ISO/standard format
-        // PM/AM check
-        const isPM = dateStr.includes('오후');
-        const year = Number(dateStr.split('년')[0]);
-        const month = Number(dateStr.split('년 ')[1].split('월')[0]);
-        const day = Number(dateStr.split('월 ')[1].split('일')[0])
-
-        let timePart, hours = 0;
-        if (isPM) {
-          timePart = dateStr.split('일 ')[1].split('오후 ')[1];
-          hours = Number(timePart.split(':')[0]) + 12;
-        } else {
-          timePart = dateStr.split('일 ')[1].split('오전 ')[1];
-          hours = Number(timePart.split(':')[0]);
-        }
-        const minutes = Number(timePart.split(':')[1]);
-        
-        return new Date(year, month - 1, day, hours, minutes);
-      } catch (e) {
-        return new Date(0);
-      }
-    };
-
-    return parseNotionDate(b.date).getTime() - parseNotionDate(a.date).getTime();
-  });
+  // Sort posts by date (newest first). Dates are ISO 8601 local time strings.
+  const toTime = (dateStr: string) => {
+    const time = new Date(dateStr).getTime();
+    return isNaN(time) ? 0 : time;
+  };
+  return posts.sort((a, b) => toTime(b.date) - toTime(a.date));
 }
