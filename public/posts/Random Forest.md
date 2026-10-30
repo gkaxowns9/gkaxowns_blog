@@ -10,7 +10,7 @@ tags: ["파이썬", "머신러닝", "Decision Tree", "앙상블"]
 - Random Forest 는 분류와 회귀에 사용되는 지도학습 알고리즘으로, **여러 개의 의사결정나무(Decision Tree)를 조합한 앙상블 모델**이다.
   단순하게 설명하자면, **수도 없이 많은 조건문들을 만들고 이를 합치는 모델**이다.
 
-![이 밈의 주인공이 바로 이 친구이다.](/img/ai-if.png)
+![이 밈의 주인공이 바로 이 친구이다.](/posts/images/ai-if.png)
 
 `이 밈의 주인공이 바로 이 친구이다.`
 
@@ -22,7 +22,7 @@ tags: ["파이썬", "머신러닝", "Decision Tree", "앙상블"]
 - 위에서 Random Forest는 여러 개의 **의사결정나무(Decision Tree)** 를 사용한다고 했다.
   의사결정나무는 일련의 if-else로 이루어진 나무모형이다.
 
-![image.png](/img/Decision-Tree.png)
+![image.png](/posts/images/Decision-Tree.png)
 
 - 의사결정나무는 **탐욕적 재귀 분할(Greedy Recursive Partitioning)** 알고리즘으로 만들어진다.
   이 알고리즘은 현재 노드에서 전역 최적점(global optimum)를 선택하여 매 단계에서 가장 성능 개선이 큰 분할을 선택한다.
@@ -46,7 +46,7 @@ tags: ["파이썬", "머신러닝", "Decision Tree", "앙상블"]
 - 앙상블(ensemble)이란, **여러 개의 모델을 조합하여 더 강력하고 안정적인 예측 모델을 만드는 기법**이다.
   다양한 종류의 의사결정트리들을 사용하기 때문에 다양한 오차가 발생하고, 그런 값을 조합하여 더 높은 예측 성능과 일반화 능력을 가질 수 있다.
 
-![앙상블 설명하는 Figure](/img/ensemble.png)
+![앙상블 설명하는 Figure](/posts/images/ensemble.png)
 
 `앙상블 설명하는 Figure`
 

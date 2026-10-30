@@ -30,16 +30,16 @@ tags: ["파이썬", "딥러닝", "이미지 생성", "Diffusion"]
 
 - Text Encoding 모델의 기본적인 원리는 자언어를 Tensor 형식으로 변환하는 것이다.
 
-![image.png](../img/image.png)
+![image.png](/posts/images/image.png)
 
-![image.png](../img/image%201.png)
+![image.png](/posts/images/image%201.png)
 
-![image.png](../img/image%202.png)
+![image.png](/posts/images/image%202.png)
 
 - 위의 실제 Stable Diffusion의 코드를 보면, prompt를 모델의 내장함수로 encode 하는 것을 볼 수 있다.
 - 참고로 저 내장함수의 이름이 get_learned_conditioning 인데, 여기서 condition이란 **Diffusion 모델에 추가적인 제약이나 정보를 주는 것**으로 이미지에 Noise를 더하거나 제거할 때의 조건(condition)을 주는 값이다.
 
-![[출처](https://ffighting.net/deep-learning-paper-review/diffusion-model/stable-diffusion/)](../img/897b433e-6cee-49a6-8aad-391738bfaa62.png)
+![[출처](https://ffighting.net/deep-learning-paper-review/diffusion-model/stable-diffusion/)](/posts/images/897b433e-6cee-49a6-8aad-391738bfaa62.png)
 
 [출처](https://ffighting.net/deep-learning-paper-review/diffusion-model/stable-diffusion/)
 
@@ -60,24 +60,24 @@ $$
   해당 과정을 이해하기 위해서는 U-Net에 대해 이해해야 한다.
 - U-Net은 U자 모양의 신경망으로, **노이즈에서 고품질 이미지를 점진적으로 생성하는 역할**을 담당하는 핵심이다.
 
-![진짜 U자임;; [출처](https://ai-onespoon.tistory.com/entry/Stable-Diffusion-UNet-%EA%B5%AC%EC%A1%B0)](/img/u-net.png)
+![진짜 U자임;; [출처](https://ai-onespoon.tistory.com/entry/Stable-Diffusion-UNet-%EA%B5%AC%EC%A1%B0)](/posts/images/u-net.png)
 
 진짜 U자임;; [출처](https://ai-onespoon.tistory.com/entry/Stable-Diffusion-UNet-%EA%B5%AC%EC%A1%B0)
 
 - 이제 U-Net을 사용하여 노이즈를 제거할 수 있다. 아래 구조를 참고하자.
 
-![image.png](../img/image%203.png)
+![image.png](/posts/images/image%203.png)
 
 - 위에서 볼 수 있듯, U-Net을 활용하여 노이즈를 찾아내고, 이를 제거하여 점진적으로 노이즈를 제거하는 구조이다.
 - 이제 Scheduler를 사용하여 이를 여러 번 진행하여 노이즈가 완전히 제거된 이미지를 얻을 수 있을 것이다.
 
-![image.png](../img/image%204.png)
+![image.png](/posts/images/image%204.png)
 
 ### Image Decoding 모델
 
 - 이제 생성된 이미지 Tensor를 실제 이미지로 Decoding 해줄 차례이다. 아래 실제 코드를 보며 설명하겠다.
 
-![image.png](../img/image%205.png)
+![image.png](/posts/images/image%205.png)
 
 - 먼저 노이즈가 제거된 sample을 내장함수로 decode한 후, Pillow 라이브러리를 통해 우리가 평소 사용하는 png 코덱으로 이를 변환해 준다.
 - 그런 후, sample를 list에 저장하고 다시 반복한다. 앞에서 설명했던 노이즈를 제거하는 과정을 계속 반복하며 이를 png 코덱으로 변환한다. (여기서 주의해야 할 점은 png 코덱으로 변환한 데이터가 아닌, 생성하고 decode한 sample을 저장한다.

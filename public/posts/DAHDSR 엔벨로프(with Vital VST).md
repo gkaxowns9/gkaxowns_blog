@@ -25,7 +25,7 @@ tags: ["음악", "신디사이저", "VitalVST"]
 - ADSR 엔벨로프의 확장 버전으로, 기존 ADSR 엔벨로프에 Delay와 Hold 변수를 추가하여 여섯 개의 변수를 가진다. Vital, Serum 등 과 같은 소프트웨어 신디사이저에서 자주 보인다.
   아래는 예시로 사용할 Vital의 엔벨로프 그래프이다. (근데 사실 Vital은 DAHDSR의 확장 버전이다.)
 
-![vital.png](../img/vital.png)
+![vital.png](/posts/images/vital.png)
 
 - Attack과 Decay 앞에 Delay와 Hold가 추가된 모습을 볼 수 있다.
   추가된 변수의 쓰임은 다음과 같다

@@ -11,7 +11,7 @@ tags: ["파이썬", "Write-up", "flask", "dreamhack", "webhacking", "SQLi"]
   
   자세한 설명을 위해 드림핵에서 설명을 캡쳐했다
 
-![설명](/img/writeup_series/gpt-description.png)
+![설명](/posts/images/writeup_series/gpt-description.png)
 
 - 그렇다고 한다
   
@@ -70,7 +70,7 @@ def login():
 ## 풀이
 - 서버를 열고 login 페이지에 접속해서 input에 아래처럼 값을 넣어주었다.
 
-![payload](/img/writeup_series/gpt_payload.png)
+![payload](/posts/images/writeup_series/gpt_payload.png)
 ```SQL
 0' and userid='admin' -- 
 ```
@@ -78,5 +78,5 @@ def login():
 
 - 결과로 flag을 얻을 수 있다
 
-![payload](/img/writeup_series/gpt_flagg.png)
-![payload](/img/writeup_series/gpt_flag.png)
+![payload](/posts/images/writeup_series/gpt_flagg.png)
+![payload](/posts/images/writeup_series/gpt_flag.png)

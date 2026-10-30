@@ -28,7 +28,7 @@ print(rad.randint(1,10))
 - 이와 같이 Class를 가져와서 변수에 객체를 저장하고, 객체에 담겨져 있는 변수나 함수를 불러와 사용하게 된다.
   Class와 객체의 관계에 대해 비유하자면 붕어빵 틀과 붕어빵이라고 생각하면 쉬울 듯 하다.
 
-![[이미지 출처](https://velog.io/@luna001631/%EC%9E%90%EB%B0%94JAVA-%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B4OOP%EB%9E%80-%EA%B0%9D%EC%B2%B4%EB%9E%80-%EA%B0%9D%EC%B2%B4%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EC%A7%80-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B3%A0-%EA%B0%9D%EC%B2%B4%EC%9D%98-%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9%EC%97%90-%EB%8C%80%ED%95%B4-%EC%9D%B4%ED%95%B4%ED%95%B4%EB%B3%B4%EC%9E%90) (야채 붕어빵..?)](/img/Bungeobbang.png)
+![[이미지 출처](https://velog.io/@luna001631/%EC%9E%90%EB%B0%94JAVA-%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B4OOP%EB%9E%80-%EA%B0%9D%EC%B2%B4%EB%9E%80-%EA%B0%9D%EC%B2%B4%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EC%A7%80-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B3%A0-%EA%B0%9D%EC%B2%B4%EC%9D%98-%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9%EC%97%90-%EB%8C%80%ED%95%B4-%EC%9D%B4%ED%95%B4%ED%95%B4%EB%B3%B4%EC%9E%90) (야채 붕어빵..?)](/posts/images/Bungeobbang.png)
 
 
 - 정확히 따지자면 다른 개념이긴 하지만 이해를 위해 이와 같이 설명하겠다. (그리고 이렇게 생각해도 전혀 문제가 없다. 왜 다른지 궁금하면 [여기](https://velog.io/@ubin_ing/%EA%B0%9D%EC%B2%B4%EB%8A%94-%EC%99%9C-%EB%B6%95%EC%96%B4%EB%B9%B5%EC%9D%B4-%EC%95%84%EB%8B%90%EA%B9%8C)로)

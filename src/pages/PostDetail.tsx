@@ -46,11 +46,7 @@ export default function PostDetail() {
     };
   }, [slug]);
 
-  // Handle image path replacement (../img/ -> /img/)
-  const processedContent = useMemo(() => {
-    if (!post) return '';
-    return post.content.replace(/\.\.\/img\//g, '/img/');
-  }, [post]);
+  const processedContent = post?.content ?? '';
 
   // Extract table of contents (H2 and H3 headers)
   const toc = useMemo(() => {
